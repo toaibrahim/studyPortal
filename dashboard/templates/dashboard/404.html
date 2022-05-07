@@ -1,0 +1,28 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+<br>
+<br>
+<br>
+
+<div class="container">
+    <h2 style="color: red;">Page not found</h2>
+    <p>This page is invalid of missing on the please go back to the home page</p>
+    <a href="{% url 'dashboard:home' %}"><button class="btn btn-primary">Go back home</button></a>
+</div>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% if notes %}
+        {% for note in notes %}
+        <div class="col-md-3">
+            <a href="{{note.get_absolute_url}}">
+                <div class="card">
+                    <div class="card-header">{{note.title}}</div>
+                    <div class="card-body">{{note.snipet}}</div>
+                    <div class="card-footer mt-auto ">
+                        <a href="{{note.get_delete_note_url}}">
+                            <i class="fa fa-trash fa-2x"></i>
+                        </a>
+                        <a href="{{note.get_update_notes_url}}">
+                            <i class="fa fa-pen fa-2x float-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>There don't have any note yet</p>
+        {% endif %}
+
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Notes</legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button href="" class="btn btn-outline-info" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
